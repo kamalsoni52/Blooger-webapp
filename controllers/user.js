@@ -1,6 +1,6 @@
 const User = require("../models/user")
-async function handelSignUp(req,res){
-    const { username, email, password} = req.body;
+async function handelSignUp(req, res) {
+    const { username, email, password } = req.body;
     await User.create({
         username,
         email,
@@ -9,14 +9,24 @@ async function handelSignUp(req,res){
     return res.redirect("/login")
 }
 
-async function handleLogin(req,res){
-    const {email, password} = req.body;
-    const user = await User.matchPassword(email, password);
-    console.log(user)
-    return res.redirect("/")
+async function handleLogin(req, res) {
+    try {
+        const { email, password } = req.body;
+        const token = await User.matchPasswordAndGenerateToken(email, password);
+        return res.cookie("token", token).redirect("/")
+    }
+    catch (error) {
+        return res.render("login", {
+            error: "Incorrect Email or Password"
+        })
+    }
 }
-
+function handleLogout(req,res){
+    console.log("logout route")
+    res.clearCookie("token").redirect("/")
+}
 module.exports = {
     handelSignUp,
-    handleLogin
+    handleLogin,
+    handleLogout
 }

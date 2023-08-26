@@ -1,5 +1,7 @@
 function handleHomePage(req,res){
-    res.render("home");
+    res.render("home",{
+        user: req.user,
+    });
 }
 function handleSignupPage(req,res){
 
