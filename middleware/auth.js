@@ -13,10 +13,19 @@ function checkForAuthentication(cookieName){
             console.log("some error in middleware")
         }
         next();
-
     }
 }
 
+function restrictToBlogTask(){
+    return function(req,res,next){
+        if(!req.user){
+            return res.redirect("/login")
+            next();
+        }
+        next();
+    }
+}
 module.exports={
     checkForAuthentication,
+    restrictToBlogTask
 }

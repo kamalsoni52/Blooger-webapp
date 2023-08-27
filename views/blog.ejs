@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <title>Blog</title>
+</head>
+<body class="bg-blue-500">
+    <%- include("./partials/nav") %>
+    
+    <div class="pt-5 px-4 flex flex-col gap-5">
+        <h1 class="text-white text-4xl">
+            <%= locals.blog.title %>
+        </h1>
+        <hr class="border-black"></hr>
+        <img 
+        src="<%= locals.blog.coverImageUrl %>" 
+        alt=""
+        class="w-[900px] rounded-lg">
+        <div>
+            <pre class="text-white whitespace-pre-wrap">
+                <%= locals.blog.content %>
+            </pre>
+        </div>
+        
+    </div>
+
+    <div  class="px-4 pb-3 flex flex-row gap-2  items-center">
+        <img
+        class="w-[50px] h-[50px] roundedu-full"
+        src="<%= locals.blog.createdBy.profileImageURL %>" alt="">
+        <h5><%= locals.blog.createdBy.username %></h5>
+    </div>
+
+
+    <%- include("./partials/navscript") %>
+</body>
+
+</html>

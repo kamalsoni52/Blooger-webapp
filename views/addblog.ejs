@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <%- include("./partials/head.ejs") %>
+    <title>Add-Blog</title>
+</head>
+<body class="bg-blue-500">
+    <%- include("./partials/nav") %>
+    
+    <div class="flex items-center justify-center ">
+        <div class=" mt-8 rounded-xl  w-full max-w-[550px] p-12 bg-white">
+          <form action="/blog/addblog" method="post" enctype="multipart/form-data">
+            
+            <div class="max-w-2xl mx-auto">
+                <label 
+                    class="block mb-2 text-base font-medium  text-[#07074D] " 
+                    for="coverImage">
+                    Upload Cover Image
+                </label>
+
+                <input 
+                class="block w-full text-sm text-gray-900 border border-gray-300 rounded-lg cursor-pointer bg-gray-50 dark:text-gray-400 focus:outline-none dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 mb-4" 
+                id="coverImage" 
+                type="file"
+                name="coverImage">
+                
+            </div>
+            <div class="mb-5">
+              <label
+                for="title"
+                class="mb-3 block text-base font-medium text-[#07074D]"
+              >
+                Blog Title
+              </label>
+              <input
+                type="text"
+                name="title"
+                id="name"
+                placeholder="Blog Title"
+                class="w-full rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              />
+            </div>
+
+            <div class="mb-5">
+              <label
+                for="content"
+                class="mb-3 block text-base font-medium text-[#07074D]"
+              >
+                Blog Content
+              </label>
+              <textarea
+                rows="4"
+                name="content"
+                id="message"
+                placeholder="Type your message"
+                class="w-full resize-none rounded-md border border-[#e0e0e0] bg-white py-3 px-6 text-base font-medium text-[#6B7280] outline-none focus:border-[#6A64F1] focus:shadow-md"
+              ></textarea>
+            </div>
+
+            <div>
+              <button
+                class="hover:shadow-form rounded-md bg-[#6A64F1] py-3 px-8 text-base font-semibold text-white outline-none"
+                type="submit"
+              >
+                Submit
+              </button>
+            </div>
+          </form>
+        </div>
+      </div>
+    
+    <%- include("./partials/navscript") %>
+</body>
+
+</html>

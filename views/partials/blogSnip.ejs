@@ -1,0 +1,30 @@
+<% if (locals.blogs.length===0) { %>
+    <section class="bg-white dark:bg-gray-900">
+        <div class="container px-6 py-10 mx-auto">
+            <h1 class="text-3xl font-semibold text-white capitalize lg:text-4xl ">No blogs Available</h1>
+        </div>
+    </section>
+
+    <% } else { %>
+
+        <div class="px-4 py-2 grid grid-flow-row gap-2 text-neutral-600 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-4 ">
+            
+            <% locals.blogs.forEach(blog=> { %>     
+                <div class="rounded-lg container bg-white py-5  px-5 ">   
+                    <div class="">
+                        <img class="object-cover w-full h-40 rounded-lg " src="<%= blog.coverImageUrl %>" alt="">
+
+                        <div class="flex flex-col justify-between py-6 gap-1 ">
+                            <a href="/<%= blog._id %>" class="text-l font-semibold text-black hover:underline  ">
+                                <%= blog.title %>
+                            </a>
+
+                            <span class="text-sm text-gray-900 ">Written By: <%= blog.createdBy.username %></span>
+                        </div>
+                    </div>
+                </div>
+                <% }) %>
+            </div>
+
+
+        <% }%>
