@@ -3,7 +3,7 @@ const {
      handleHomePage,
      handleSignupPage, 
      handleLoginPage,
-     handleBlogArticle
+     
      
      } = require("../controllers/static");
 
@@ -13,6 +13,6 @@ router.get("/", handleHomePage)
 router.get("/signup", handleSignupPage)
 router.get("/login", handleLoginPage)
 
-router.get("/:id", handleBlogArticle);
+
 
 module.exports = router

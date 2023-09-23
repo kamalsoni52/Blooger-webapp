@@ -1,4 +1,5 @@
 const User = require("../models/user")
+
 async function handelSignUp(req, res) {
     const { username, email, password } = req.body;
     await User.create({
@@ -23,7 +24,7 @@ async function handleLogin(req, res) {
 }
 function handleLogout(req,res){
     console.log("logout route")
-    res.clearCookie("token").redirect("/")
+    return res.clearCookie("token").redirect("/")
 }
 module.exports = {
     handelSignUp,

@@ -8,8 +8,10 @@ const blogRoutes = require("./routes/blog")
 const { checkForAuthentication, restrictToBlogTask } = require("./middleware/auth");
 const app = express();
 const PORT = 8000; 
-mongoose.connect("mongodb://127.0.0.1:27017/bloggers").then(e=>{
+
+mongoose.connect("mongodb://127.0.0.1:27017/bloggers").then(()=>{
     console.log("mongo connected")
+
 })
 
 app.use(express.urlencoded({extended: false}));

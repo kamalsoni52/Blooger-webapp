@@ -1,34 +1,35 @@
-const Blogs= require("../models/blog");
+const Blogs = require("../models/blog");
 
-async function handleHomePage(req,res){
-    const allBlogs = await Blogs.find({}).populate("createdBy");
-    res.render("home",{
-        user: req.user,
-        blogs: allBlogs,
-    });
+async function handleHomePage(req, res) {
+    try {
+        const allBlogs = await Blogs.find({}).populate("createdBy");
+        return res.render("home", {
+            user: req.user,
+            blogs: allBlogs,
+        });
+    }
+    catch (error){
+        console.log("error",error)
+    }
 }
-function handleSignupPage(req,res){
+function handleSignupPage(req, res) {
 
-    res.render("signup")
+    return res.render("signup")
 }
-function handleLoginPage(req,res){
+function handleLoginPage(req, res) {
 
-    res.render("login")
-}
-async function handleBlogArticle(req,res){
-    const blog = await Blogs.findById(req.params.id).populate("createdBy")
-    return res.render("blog",{
-        user: req.user,
-        blog,
-    })
-
+    return res.render("login")
 }
 
 
-module.exports ={
+
+
+
+
+module.exports = {
     handleHomePage,
     handleSignupPage,
     handleLoginPage,
-    handleBlogArticle
     
+
 }
